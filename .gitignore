@@ -1,0 +1,22 @@
+# .env — секретные данные (НИКОГДА не загружать в Git!)
+.env
+
+# База данных SQLite
+*.db
+*.db-shm
+*.db-wal
+
+# Node modules
+node_modules/
+
+# Original media and local JSON guest storage
+originals/
+uzatu_guests.json
+
+# Логи
+*.log
+npm-debug.log*
+
+# OS файлы
+.DS_Store
+Thumbs.db

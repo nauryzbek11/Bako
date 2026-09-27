@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#2C4A3E" />
+
+  <!-- SEO -->
+  <title>Балнұр — Ұзату тойы • 24 Қазан 2026</title>
+  <meta name="description" content="Балнұрдың ұзату тойына арнайы шақырылдыңыз. 24 Қазан 2026, 17:00, ShahHall мейрамханасы, Жалағаш кенті. Той иелері: Абзал – Мария." />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Балнұр — Ұзату тойы" />
+  <meta property="og:description" content="24 Қазан 2026 • 17:00 • ShahHall • Жалағаш кенті" />
+  <meta property="og:type" content="website" />
+
+  <!-- Preconnect для Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="no-scroll">
+
+<!-- ================================================
+     ① ЭКРАН-КОНВЕРТ
+     ================================================ -->
+<div id="envelope-screen" role="dialog" aria-label="Шақыру конверті">
+
+  <!-- Фоновые декорации -->
+  <div class="envelope-bg"></div>
+  <div class="envelope-ornament-top">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+      <path d="M0,40 Q180,0 360,40 Q540,80 720,40 Q900,0 1080,40 Q1260,80 1440,40"
+            fill="none" stroke="#C9A84C" stroke-width="0.8" opacity="0.6"/>
+      <path d="M0,50 Q180,10 360,50 Q540,90 720,50 Q900,10 1080,50 Q1260,90 1440,50"
+            fill="none" stroke="#C9A84C" stroke-width="0.4" opacity="0.3"/>
+    </svg>
+  </div>
+  <div class="envelope-ornament-bottom">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+      <path d="M0,40 Q180,0 360,40 Q540,80 720,40 Q900,0 1080,40 Q1260,80 1440,40"
+            fill="none" stroke="#C9A84C" stroke-width="0.8" opacity="0.6"/>
+    </svg>
+  </div>
+
+  <!-- Угловые декорации -->
+  <div class="envelope-corner tl" aria-hidden="true"></div>
+  <div class="envelope-corner tr" aria-hidden="true"></div>
+  <div class="envelope-corner bl" aria-hidden="true"></div>
+  <div class="envelope-corner br" aria-hidden="true"></div>
+
+  <!-- Кнопка пропустить -->
+  <button class="skip-btn" id="skip-btn" aria-label="Анимацияны өткізу">Өткізу</button>
+
+  <!-- Контент конверта -->
+  <div class="envelope-content">
+    <div>
+      <p class="envelope-greeting">Сізге арнайы шақыру</p>
+      <p class="envelope-subtitle">A special invitation for you</p>
+    </div>
+
+    <!-- Сургучная печать -->
+    <div class="seal-container" id="seal-container" role="button"
+         aria-label="Конвертті ашу үшін басыңыз" tabindex="0">
+      <div class="seal" id="seal">
+        <span class="seal-initials">Б</span>
+        <span class="seal-text">2026</span>
+      </div>
+      <p class="seal-hint">Ашу үшін басыңыз</p>
+    </div>
+  </div>
+
+  <!-- Клапан конверта (анимация открытия) -->
+  <div class="envelope-flap" id="envelope-flap" aria-hidden="true"></div>
+</div>
+
+<!-- ================================================
+     КНОПКА УПРАВЛЕНИЯ МУЗЫКОЙ (фиксированная)
+     ================================================ -->
+<button id="music-btn" aria-label="Музыканы қосу/өшіру" title="Музыка">
+  <span class="music-icon" id="music-icon">♫</span>
+</button>
+
+<!-- ================================================
+     ② HERO — ГЛАВНЫЙ ЭКРАН
+     ================================================ -->
+<a id="back-to-top" href="#hero" aria-label="Басты экранға оралу" title="Басты экранға оралу"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5m7-7-7 7 7 7" /></svg></a>
+<section id="hero" tabindex="-1" aria-label="Басты экран">
+  <!-- Фон -->
+  <div class="hero-bg">
+    <!-- Градиентный фон (всегда виден) -->
+    <div class="hero-bg-gradient"></div>
+      <div id="hero-slides" aria-hidden="true"></div>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-aura" aria-hidden="true"></div>
+  <div class="hero-curtains" aria-hidden="true"><span></span><span></span></div>
+  <div class="hero-sparkles" id="hero-sparkles" aria-hidden="true"></div>
+  <div class="hero-frame" aria-hidden="true"></div>
+
+  <!-- Контент -->
+  <div class="hero-content" id="hero-content">
+    <span class="hero-event-type" id="hero-event-type">Ұзату тойы</span>
+
+    <h1 class="hero-name" id="hero-name"><!-- заполняется JS --></h1>
+
+    <div class="hero-divider" aria-hidden="true"></div>
+
+    <p class="hero-date" id="hero-date"><!-- заполняется JS --></p>
+    <p class="hero-location" id="hero-location"><!-- заполняется JS --></p>
+    <p class="hero-hosts" id="hero-hosts"><!-- заполняется JS --></p>
+  </div>
+
+  <button id="slideshow-toggle" type="button" aria-label="Фотослайдтарды тоқтату" aria-pressed="false">Ⅱ</button>
+  <!-- Scroll down -->
+  <div class="hero-scroll" aria-hidden="true">
+    <div class="hero-scroll-line"></div>
+    <span class="hero-scroll-text">Scroll</span>
+  </div>
+</section>
+
+<!-- ================================================
+     ④ ФОТОГАЛЕРЕЯ
+     ================================================ -->
+<section id="video-section" aria-labelledby="video-heading">
+  <div class="container">
+    <div class="video-header reveal">
+      <span class="section-label">Бейне</span>
+      <h2 class="video-title" id="video-heading">Біздің ерекше күніміз</h2>
+      <div class="ornament" aria-hidden="true"><span class="ornament-symbol">✦ ✦ ✦</span></div>
+    </div>
+    <div class="video-wrapper invitation-film reveal-scale">
+      <video id="invitation-video" controls playsinline preload="none" aria-label="Ұзату тойына арналған бейне"></video>
+      <button id="video-play" type="button" aria-label="Бейнені ойнату">
+        <span class="video-play-circle" aria-hidden="true">▶</span>
+        <span>Бейнені көру</span>
+      </button>
+    </div>
+    <p id="video-error" role="status" hidden>Бейне жүктелмеді. Қайта көріңіз.</p>
+  </div>
+</section>
+
+<section id="gallery" aria-label="Фотогалерея">
+  <div class="gallery-header reveal">
+    <span class="section-label">Галерея</span>
+    <h2 class="gallery-title">Естеліктер</h2>
+    <div class="ornament">
+      <span class="ornament-symbol">✦ ✦ ✦</span>
+    </div>
+  </div>
+
+  <!-- Сетка галереи — заполняется через JS -->
+  <div class="gallery-grid" id="gallery-grid" role="list" aria-label="Фотосуреттер"></div>
+</section>
+
+<!-- ================================================
+     ⑤ ОБРАЩЕНИЕ К ГОСТЯМ
+     ================================================ -->
+<section id="invitation-text" aria-labelledby="invitation-heading">
+  <div class="container text-center">
+    <span class="section-label reveal">Шақыру</span>
+    <h2 class="invitation-header reveal" id="invitation-heading">Құрметті қонақтар!</h2>
+    <div class="ornament reveal">
+      <span class="ornament-symbol">✦ ✦ ✦</span>
+    </div>
+    <p class="invitation-body reveal" id="invitation-body"><!-- заполняется JS --></p>
+    <p class="invitation-sub reveal" id="invitation-sub"><!-- заполняется JS --></p>
+  </div>
+</section>
+
+<!-- ================================================
+     ⑥ ДАТА И МЕСТО
+     ================================================ -->
+<section id="date-section" aria-label="Мерекенің күні мен орны">
+  <div class="container text-center">
+    <div class="date-big reveal" id="date-big">24</div>
+    <div class="date-month reveal" id="date-month"><!-- заполняется JS --></div>
+
+    <div class="date-details-grid reveal">
+      <div class="date-detail-item">
+        <span class="date-detail-value" id="date-time"><!-- заполняется JS --></span>
+        <span class="date-detail-label">Уақыты</span>
+      </div>
+      <div class="date-detail-item">
+        <span class="date-detail-value" id="date-venue"><!-- заполняется JS --></span>
+        <span class="date-detail-label">Орны</span>
+      </div>
+      <div class="date-detail-item">
+        <span class="date-detail-value" id="date-city"><!-- заполняется JS --></span>
+        <span class="date-detail-label">Қала</span>
+      </div>
+    </div>
+
+    <div class="ornament reveal" style="margin-top:40px">
+      <span class="ornament-symbol" style="color:rgba(201,168,76,0.5)">✦ ✦ ✦</span>
+    </div>
+
+    <p style="margin-top:24px; font-family:var(--font-sans); font-size:0.65rem; letter-spacing:3px; text-transform:uppercase; color:rgba(255,255,255,0.4)" class="reveal">
+      Той иелері
+    </p>
+    <p style="margin-top:8px; font-family:var(--font-display); font-size:clamp(1.5rem,4vw,2.5rem); font-style:italic; color:var(--gold-light)" class="reveal" id="date-hosts"><!-- заполняется JS --></p>
+  </div>
+</section>
+
+<!-- ================================================
+     ⑦ ТАЙМЕР
+     ================================================ -->
+<section id="countdown" aria-label="Санақ">
+  <div class="container text-center">
+    <span class="section-label reveal">Күтеміз</span>
+    <p class="countdown-title reveal" id="countdown-title"><!-- заполняется JS --></p>
+
+    <div class="countdown-grid reveal" id="countdown-grid" aria-live="polite">
+      <div class="countdown-item">
+        <span class="countdown-number" id="cd-days">00</span>
+        <span class="countdown-label">Күн</span>
+      </div>
+      <div class="countdown-item">
+        <span class="countdown-number" id="cd-hours">00</span>
+        <span class="countdown-label">Сағат</span>
+      </div>
+      <div class="countdown-item">
+        <span class="countdown-number" id="cd-mins">00</span>
+        <span class="countdown-label">Минут</span>
+      </div>
+      <div class="countdown-item">
+        <span class="countdown-number" id="cd-secs">00</span>
+        <span class="countdown-label">Секунд</span>
+      </div>
+    </div>
+
+    <p class="countdown-finished" id="countdown-finished">Бүгін біздің қуанышымыз!</p>
+  </div>
+</section>
+
+<!-- ================================================
+     ⑧ КАРТА
+     ================================================ -->
+<section id="map-section" aria-label="Мекенжай">
+  <div class="container">
+    <div class="text-center">
+      <span class="section-label reveal">Мекенжай</span>
+      <h2 class="map-title reveal">Тойдың мекенжайы</h2>
+      <p class="map-venue reveal" id="map-venue"><!-- заполняется JS --></p>
+      <div class="ornament reveal">
+        <span class="ornament-symbol">✦ ✦ ✦</span>
+      </div>
+      <div style="margin-top:40px" class="reveal">
+        <a id="map-btn" class="map-btn" target="_blank" rel="noopener" aria-label="Картада маршрутты ашу">
+          <span>📍 Маршрутты ашу</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================
+     ⑨ RSVP — ФОРМА ПОДТВЕРЖДЕНИЯ
+     ================================================ -->
+<section id="rsvp" aria-labelledby="rsvp-heading">
+  <div class="container">
+    <div class="rsvp-header reveal">
+      <span class="section-label" style="color:rgba(201,168,76,0.7)">Растау</span>
+      <h2 class="rsvp-title" id="rsvp-heading">Қатысуыңызды растаңыз</h2>
+      <p class="rsvp-subtitle">Сіздің жауабыңыз бізге өте маңызды</p>
+    </div>
+
+    <!-- Форма -->
+    <form class="rsvp-form reveal" id="rsvp-form" novalidate aria-label="Қатысуды растау формасы">
+
+      <!-- Имя -->
+      <div class="form-field">
+        <label class="form-label" for="rsvp-name">Аты-жөніңіз</label>
+        <input
+          class="form-input"
+          type="text"
+          id="rsvp-name"
+          name="name"
+          placeholder="Атыңызды енгізіңіз"
+          autocomplete="name"
+          required
+          minlength="2"
+          maxlength="100"
+        />
+      </div>
+
+      <!-- Количество гостей -->
+      <div class="form-field">
+        <label class="form-label">Адам саны</label>
+        <div class="guest-counter" role="group" aria-label="Адам санын таңдаңыз">
+          <button
+            type="button"
+            class="counter-btn"
+            id="count-minus"
+            aria-label="Азайту"
+            disabled
+          >−</button>
+          <span id="guest-count-display" aria-live="polite" aria-atomic="true">1</span>
+          <input type="hidden" id="rsvp-count" name="guestCount" value="1" />
+          <button
+            type="button"
+            class="counter-btn"
+            id="count-plus"
+            aria-label="Көбейту"
+          >+</button>
+        </div>
+      </div>
+
+      <!-- Статус -->
+      <div class="form-field">
+        <label class="form-label">Статусыңыз</label>
+        <div class="status-options" role="radiogroup" aria-label="Қатысу статусы">
+          <div class="status-option">
+            <input type="radio" name="status" id="status-yes" value="confirmed" checked />
+            <label for="status-yes">Қатысамын</label>
+          </div>
+          <div class="status-option">
+            <input type="radio" name="status" id="status-no" value="declined" />
+            <label for="status-no">Қатыса алмаймын</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Отправка -->
+      <button type="submit" class="rsvp-submit" id="rsvp-submit">
+        <span>Қатысуды растау</span>
+      </button>
+    </form>
+
+    <!-- Сообщение об успехе -->
+    <div class="rsvp-success" id="rsvp-success" role="status" aria-live="polite">
+      <span class="rsvp-success-icon">✓</span>
+      <p class="rsvp-success-text">Рақмет!</p>
+      <p class="rsvp-success-sub">Сіздің жауабыңыз қабылданды.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================
+     ⑩ СЧЁТЧИК ГОСТЕЙ
+     ================================================ -->
+<section id="guest-counter-section" aria-label="Қонақтар саны">
+  <div class="container text-center reveal">
+    <span class="counter-label-text">Бізбен бірге</span>
+    <span class="counter-number" id="live-guest-count" aria-live="polite">—</span>
+    <span class="counter-suffix">қонақ</span>
+  </div>
+</section>
+
+<!-- ================================================
+     ⑪ ФИНАЛЬНЫЙ ЭКРАН
+     ================================================ -->
+<section id="final" aria-label="Соңғы экран">
+  <div class="final-bg"></div>
+  <img class="final-bg-img" id="final-bg-img" alt="" aria-hidden="true" loading="lazy" />
+  <div class="final-overlay"></div>
+
+  <div class="final-content reveal">
+    <p class="final-msg" id="final-msg"><!-- заполняется JS --></p>
+    <div class="ornament" style="margin-bottom:32px">
+      <span class="ornament-symbol" style="color:rgba(201,168,76,0.5)">✦ ✦ ✦</span>
+    </div>
+    <p class="final-date" id="final-date"><!-- заполняется JS --></p>
+    <p class="final-venue" id="final-venue"><!-- заполняется JS --></p>
+    <p class="final-hosts" id="final-hosts"><!-- заполняется JS --></p>
+  </div>
+</section>
+
+<!-- ================================================
+     ⑫ КНОПКА — СПИСОК ГОСТЕЙ
+     ================================================ -->
+<div class="guest-list-trigger">
+  <button class="guest-list-trigger-btn" id="open-password-modal" aria-label="Қонақтар тізімін ашу">
+    Қонақтар тізімі
+  </button>
+</div>
+
+<!-- Footer -->
+<footer>
+  <p id="footer-text"><!-- заполняется JS --></p>
+</footer>
+
+<!-- ================================================
+     МОДАЛ — ВВОД ПАРОЛЯ
+     ================================================ -->
+<div id="password-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-hidden="true">
+  <div class="modal-box">
+    <button class="modal-close" id="close-password-modal" aria-label="Жабу">✕</button>
+    <span class="modal-lock" aria-hidden="true">🔐</span>
+    <h2 class="modal-title" id="modal-title">Құпия бөлім</h2>
+    <p class="modal-subtitle">Қонақтар тізімі</p>
+    <input
+      type="password"
+      class="modal-input"
+      id="password-input"
+      placeholder="• • • • • •"
+      autocomplete="off"
+      aria-label="Құпия сөзді енгізіңіз"
+    />
+    <button class="modal-btn" id="password-submit">Кіру</button>
+    <p class="modal-error" id="modal-error" role="alert">Қате құпия сөз</p>
+  </div>
+</div>
+
+<!-- ================================================
+     МОДАЛ — СПИСОК ГОСТЕЙ
+     ================================================ -->
+<div id="guest-list-modal" role="dialog" aria-modal="true" aria-labelledby="guest-list-title" aria-hidden="true">
+  <div class="guest-list-box">
+    <div class="guest-list-header">
+      <div>
+        <h2 class="guest-list-title" id="guest-list-title">Қонақтар тізімі</h2>
+        <p style="font-family:var(--font-sans);font-size:0.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--gray-text);margin-top:4px" id="guest-list-date"><!-- заполняется JS --></p>
+      </div>
+      <div class="guest-list-stats">
+        <div class="guest-stat">
+          <span class="guest-stat-num" id="gs-total">0</span>
+          <span class="guest-stat-label">Барлығы</span>
+        </div>
+        <div class="guest-stat">
+          <span class="guest-stat-num" id="gs-confirmed">0</span>
+          <span class="guest-stat-label">Қатысады</span>
+        </div>
+        <div class="guest-stat">
+          <span class="guest-stat-num" id="gs-people">0</span>
+          <span class="guest-stat-label">Адам</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="guest-table-wrap">
+      <table class="guest-table" aria-label="Қонақтар тізімі">
+        <thead>
+          <tr>
+            <th scope="col">№</th>
+            <th scope="col">Аты-жөні</th>
+            <th scope="col">Адам</th>
+            <th scope="col">Статус</th>
+          </tr>
+        </thead>
+        <tbody id="guest-table-body">
+          <!-- заполняется JS -->
+        </tbody>
+      </table>
+    </div>
+
+    <div style="margin-top:24px;text-align:center">
+      <button class="guest-list-trigger-btn" id="close-guest-list" style="color:var(--green-deep);border-color:var(--green-deep)">
+        Жабу
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================
+     LIGHTBOX
+     ================================================ -->
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Фото үлкейту" aria-hidden="true">
+  <button id="lightbox-close" aria-label="Жабу">✕</button>
+  <button class="lightbox-btn" id="lightbox-prev" aria-label="Алдыңғы фото">‹</button>
+  <div class="lightbox-img-wrap">
+    <img id="lightbox-img" src="" alt="Фото" />
+  </div>
+  <button class="lightbox-btn" id="lightbox-next" aria-label="Келесі фото">›</button>
+</div>
+
+<!-- ================================================
+     СКРИПТЫ
+     ================================================ -->
+<!-- Сначала данные, потом логика -->
+<script src="CONTENT/content.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
