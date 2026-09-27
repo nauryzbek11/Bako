@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Админ — Ұзату тойы</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+
+<!-- ================================================
+     СТРАНИЦА АВТОРИЗАЦИИ
+     ================================================ -->
+<div id="login-page">
+  <div class="login-box">
+    <h1 class="login-logo">Ұзату тойы</h1>
+    <p class="login-subtitle">Административная панель</p>
+
+    <div class="login-field">
+      <label class="login-label" for="admin-password">Пароль</label>
+      <input
+        type="password"
+        class="login-input"
+        id="admin-password"
+        placeholder="Введите пароль"
+        autocomplete="current-password"
+      />
+    </div>
+
+    <button class="login-btn" id="login-btn">Войти</button>
+    <p class="login-error" id="login-error" role="alert"></p>
+  </div>
+</div>
+
+<!-- ================================================
+     ПАНЕЛЬ АДМИНИСТРАТОРА
+     ================================================ -->
+<div id="admin-page">
+
+  <!-- Шапка -->
+  <header class="admin-header">
+    <div class="admin-logo">
+      Ұзату тойы
+      <span>Административная панель</span>
+    </div>
+    <button class="admin-logout" id="logout-btn">Шығу</button>
+  </header>
+
+  <!-- Основной контент -->
+  <main class="admin-main">
+
+    <!-- Карточки статистики -->
+    <div class="stats-grid" id="stats-grid">
+      <div class="stat-card green">
+        <div class="stat-value" id="stat-total">—</div>
+        <div class="stat-label">Барлық жазба</div>
+      </div>
+      <div class="stat-card gold">
+        <div class="stat-value" id="stat-confirmed">—</div>
+        <div class="stat-label">Қатысады</div>
+      </div>
+      <div class="stat-card red">
+        <div class="stat-value" id="stat-declined">—</div>
+        <div class="stat-label">Қатыспайды</div>
+      </div>
+      <div class="stat-card dark">
+        <div class="stat-value" id="stat-people">—</div>
+        <div class="stat-label">Барлық адам</div>
+      </div>
+    </div>
+
+    <!-- Таблица гостей -->
+    <div class="table-wrapper">
+      <div class="table-header">
+        <h2 class="table-title">Қонақтар тізімі</h2>
+
+        <div class="controls-bar" style="margin:0">
+          <input
+            type="search"
+            class="search-input"
+            id="search-input"
+            placeholder="Іздеу..."
+            aria-label="Қонақтар тізімін іздеу"
+          />
+          <select class="filter-select" id="filter-status" aria-label="Статус бойынша сүзу">
+            <option value="all">Барлығы</option>
+            <option value="confirmed">Қатысады</option>
+            <option value="declined">Қатыспайды</option>
+          </select>
+          <button class="refresh-btn" id="refresh-btn" aria-label="Жаңарту">↻ Жаңарту</button>
+        </div>
+      </div>
+
+      <div style="padding:8px 24px;border-bottom:1px solid var(--gray-line)">
+        <span class="table-count" id="table-count">0 жазба</span>
+      </div>
+
+      <div class="table-scroll">
+        <table class="admin-table" aria-label="Қонақтар тізімі">
+          <thead>
+            <tr>
+              <th scope="col" data-sort="id" class="sorted">
+                № <span class="sort-icon">↑</span>
+              </th>
+              <th scope="col" data-sort="name">
+                Аты-жөні <span class="sort-icon">↕</span>
+              </th>
+              <th scope="col" data-sort="guestCount">
+                Адам саны <span class="sort-icon">↕</span>
+              </th>
+              <th scope="col" data-sort="status">
+                Статус <span class="sort-icon">↕</span>
+              </th>
+              <th scope="col" data-sort="createdAt">
+                Уақыты <span class="sort-icon">↕</span>
+              </th>
+              <th scope="col">Әрекет</th>
+            </tr>
+          </thead>
+          <tbody id="admin-table-body">
+            <tr><td colspan="6" class="empty-state">Жүктелуде...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- ================================================
+     МОДАЛ РЕДАКТИРОВАНИЯ ГОСТЯ
+     ================================================ -->
+<div id="edit-modal" role="dialog" aria-modal="true" aria-labelledby="edit-modal-title" aria-hidden="true">
+  <div class="edit-modal-box">
+    <h2 class="edit-modal-title" id="edit-modal-title">Қонақ деректерін өзгерту</h2>
+
+    <div class="edit-field">
+      <label class="edit-label" for="edit-name">Аты-жөні</label>
+      <input type="text" class="edit-input" id="edit-name" maxlength="100" />
+    </div>
+
+    <div class="edit-field">
+      <label class="edit-label" for="edit-count">Адам саны</label>
+      <input type="number" class="edit-input" id="edit-count" min="1" max="50" />
+    </div>
+
+    <div class="edit-field">
+      <label class="edit-label" for="edit-status">Статус</label>
+      <select class="edit-select" id="edit-status">
+        <option value="confirmed">Қатысады</option>
+        <option value="declined">Қатыспайды</option>
+      </select>
+    </div>
+
+    <div class="edit-field">
+      <label class="edit-label" for="edit-note">Ескертпе (міндетті емес)</label>
+      <input type="text" class="edit-input" id="edit-note" maxlength="200" placeholder="Ескертпе..." />
+    </div>
+
+    <div class="edit-actions">
+      <button class="btn-save" id="edit-save">Сақтау</button>
+      <button class="btn-cancel" id="edit-cancel">Бас тарту</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast уведомление -->
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="admin.js"></script>
+</body>
+</html>
