@@ -177,10 +177,14 @@ function fillContent() {
 
   // Карта
   const mapVenueEl = document.getElementById("map-venue");
-  if (mapVenueEl) mapVenueEl.textContent = `${inv.locationName} • ${inv.city}`;
+  if (mapVenueEl) mapVenueEl.textContent = inv.map?.address || `${inv.locationName} • ${inv.city}`;
 
   // Карта — кнопка маршрута
   const mapBtn = document.getElementById("map-btn");
+  const gisBtn = document.getElementById("map-2gis-btn");
+  if (gisBtn && inv.map) {
+    gisBtn.href = inv.map.twoGisUrl || `https://2gis.kz/kyzylorda/search/${encodeURIComponent(inv.map.label)}`;
+  }
   if (mapBtn && inv.map) {
     const lat = inv.map.latitude;
     const lng = inv.map.longitude;

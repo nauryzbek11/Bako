@@ -80,11 +80,13 @@ const invitation = {
      * Измени latitude и longitude на точные координаты!
      * Найди их в Google Maps: нажми правой кнопкой на место → "Что здесь?"
      */
-    latitude: 45.0153,
-    longitude: 64.0878,
+    latitude: 45.066564,
+    longitude: 64.684775,
 
     /** Текст для кнопки маршрута */
-    label: "ShahHall мейрамханасы, Жалағаш",
+    label: "ShahHall, Жалагаш, Жалагашский район, Кызылординская область",
+    address: "Қызылорда облысы, Жалағаш ауданы, Жалағаш кенті, ShahHall мейрамханасы",
+    twoGisUrl: "https://2gis.kz/kyzylorda/directions/points/%7C64.684775,45.066564",
   },
 
   // =====================
