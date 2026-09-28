@@ -56,7 +56,7 @@ const invitation = {
   // =====================
 
   /** Путь к фоновой музыке */
-  music: "01/CONTENT/music/music.mp3",
+  music: "music-small.mp3",
 
   /**
    * Фотографии для галереи.
@@ -64,10 +64,10 @@ const invitation = {
    * Формат: "CONTENT/photos/имя-файла.jpg"
    */
   photos: [
-    "02/CONTENT/photos/photo01.jpg",
-    "03/CONTENT/photos/photo02.jpg",
-    "04/CONTENT/photos/photo03.jpg",
-    "05/CONTENT/photos/photo04.jpg",
+    "photo01-small.jpg",
+    "photo02-small.jpg",
+    "photo03-small.jpg",
+    "photo04-small.jpg",
   ],
 
   // =====================

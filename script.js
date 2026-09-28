@@ -74,6 +74,8 @@ function initHeroSlideshow() {
     for (const src of (inv.photos || []).slice(0, 4)) {
       const img = new Image();
       img.alt = "";
+      img.decoding = "async";
+      img.fetchPriority = slides.length === 0 ? "high" : "low";
       img.className = "hero-slide";
       const loaded = await new Promise(resolve => {
         img.onload = () => resolve(true);
@@ -234,7 +236,7 @@ function initMusic() {
   audio.volume = 0.4;
 
   // Плавное нарастание громкости
-  audio.addEventListener("canplaythrough", () => {
+  audio.addEventListener("canplay", () => {
     const video = document.getElementById("invitation-video");
     if (video && !video.paused) return;
     audio.volume = 0;
@@ -246,7 +248,7 @@ function initMusic() {
       // Браузер заблокировал — ничего страшного
       musicPlaying = false;
     });
-  });
+  }, { once: true });
 
   audio.onerror = () => {
     const btn = document.getElementById("music-btn");
